@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Human implements Drive, Changeable{
+public class Human implements Drive{
     protected Occupation occupation;
     protected String name;
     protected Position position;
@@ -81,7 +81,7 @@ public class Human implements Drive, Changeable{
         lookHuman = human;
         lookItem = null;
         lookLocation = null;
-        if (this.hasType(HumanType.EMBARRASED)){
+        if (this.hasType(HumanType.EMBARRASSED)){
             System.out.println(this + " оглянулся на " + human+ " и быстро отвёл глаза");
             lookHuman = null;
         } else {
@@ -113,7 +113,7 @@ public class Human implements Drive, Changeable{
         System.out.print(this + " оглядывал " + location +". Здесь было  " );
         System.out.println(Arrays.toString(location.getTypes()));
         if (location.hasType(ItemType.BURIAL)){
-            this.setCondition(Condition.FUN, -5);
+            setCondition(Condition.FUN, -5);
         }
     }
     public void askedRead(Human human, Book book){
@@ -131,15 +131,15 @@ public class Human implements Drive, Changeable{
             System.out.println(this+" поссорился с  " + human);
             this.foe.add(human);
             human.foe.add(this);
-            this.setCondition(Condition.SATISFACTION,-13);
-            human.setCondition(Condition.SATISFACTION,-13);
+            setCondition(Condition.SATISFACTION,-7);
+            human.setCondition(Condition.SATISFACTION,-7);
         }
     }
     public void say(String speech){
         System.out.println(this + " сказал" + speech);
         if (this.occupation==Occupation.DIR_FUNERAL_HOME){
             for (Human human : getLocation().getPeople()){
-                human.setCondition(Condition.FUN,-2);
+                human.setCondition(Condition.FUN,-1);
             }
         }
     }
@@ -155,23 +155,24 @@ public class Human implements Drive, Changeable{
     public void tryToPity(){
         if (Math.random() < 0.8d){
             System.out.println(this+" пытался сжалиться над " + this.lookHuman + "ом, но у него не получилось");
-            this.setTypes(HumanType.INSENSITIVE);
-            this.setCondition(Condition.DILIGENCE, -3);
+            setTypes(HumanType.INSENSITIVE);
+            setCondition(Condition.DILIGENCE, -3);
         } else{
             System.out.println(this+ "у стало жалко "+ this.lookHuman);
-            this.setTypes(HumanType.COMPASSIONATE);
-            this.setCondition(Condition.DILIGENCE, 4);
+            setTypes(HumanType.COMPASSIONATE);
+            setCondition(Condition.DILIGENCE, 4);
         }
     }
     public void tryToProtest(){
         if (Math.random() < 0.7d){
             System.out.println(this+" пыталась протестовать, но " +this.lookHuman + " был твёрд");
-            this.lookHuman.setTypes(HumanType.PERSISTENT);
-            this.setCondition(Condition.DILIGENCE, -6);
+            lookHuman.setTypes(HumanType.PERSISTENT);
+            setCondition(Condition.DILIGENCE, -6);
+            setTypes(HumanType.SAD);
         } else{
             System.out.println(this+ " пыталась протестовать и смогла убедить "+ this.lookHuman);
-            this.lookHuman.setTypes(HumanType.COMPLIANT);
-            this.setCondition(Condition.DILIGENCE, 10);
+            lookHuman.setTypes(HumanType.COMPLIANT);
+            setCondition(Condition.DILIGENCE, 10);
         }
     }
     public void understand(){
@@ -189,10 +190,12 @@ public class Human implements Drive, Changeable{
         car.started();
     }
     public void smoke(){
-        Cigarette cigarette = new Cigarette(true);
+        Cigarette cigarette = new Cigarette();
+        cigarette.lit();
         System.out.println(this + " решил покурить");
-        cigarette.action(this);
-        this.setCondition(Condition.HEALTH, -0.3);
+        setCondition(Condition.HEALTH, -0.3);
+        cigarette.goOut();
+        setTypes(HumanType.SMOKING);
     }
     public void putInCar(Item item,Car car ){
         System.out.println(this + " положил " + item + " в машину");
@@ -201,13 +204,17 @@ public class Human implements Drive, Changeable{
     public void drive(Car car){
         System.out.println(this + " нажал на газ");
         car.start();
+        getLocation().removePeople(this);
     }
     public void takeBodyPart(BodyPart part){
         this.hands.take(part);
         part.getOwner().lookHuman = this;
     }
     public void bowHead(){
-        this.head.act(this);
+        head.bow();
+        lookHuman = null;
+        lookItem = null;
+        lookLocation = null;
     }
     public void setCondition(Condition condition, double var){
         switch (condition){

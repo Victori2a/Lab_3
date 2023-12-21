@@ -1,14 +1,14 @@
 package enums;
 
 public enum HumanType {
-    EMBARRASED("смущённый"),
+    EMBARRASSED("смущённый"),
     CONFUSED("растерянный"),
     COMPASSIONATE("сострадательный"),
     INSENSITIVE("бесчувственный"),
-    UNHEALTHY("нездоровый"),
+    SMOKING("курящий"),
     PERSISTENT("настойчивый"),
     COMPLIANT("уступчивый"),
-    UNHAPPY("неcчастный"),
+    SAD("грустный"),
     BLINDED("ослеплённый");
     String name;
     HumanType(String name){

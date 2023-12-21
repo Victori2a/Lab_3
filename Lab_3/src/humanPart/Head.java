@@ -10,10 +10,8 @@ public class Head extends BodyPart{
         eyes = new Eyes("глаза", owner);
         face = new Face("лицо",owner);
     }
-    @Override
-    public void act(Human human) {
-        System.out.println("голова "+human+" наклонилась");
-    }
+    public void bow(){
+    };
     public Eyes getEyes(){
         return eyes;
     }

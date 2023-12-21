@@ -8,21 +8,12 @@ import enums.Color;
 public class Basket extends Item {
     public String name = "корзина";
     Flowers flower;
-    Position position;
     public static Flowers[] flowers = Flowers.values();
     public Basket(Flowers flower){
         this.flower = flower;
     }
     public String getFlowers(){
         return this.flower.getName();
-    }
-
-    @Override
-    public void action(Human human) {
-
-    }
-    public Color getColor() {
-        return null;
     }
     public enum Flowers{
         ROSE("Розы"),

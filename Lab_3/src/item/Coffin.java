@@ -24,11 +24,6 @@ public class Coffin extends Item {
     public Corpse getOwner(){
         return this.owner;
     }
-
-    @Override
-    public void action(Human human) {
-
-    }
     public void stand(){
         if (this.getColor()==Color.WHITE ) {
             System.out.println(getColor()+" " + this +" " + this.getOwner()+ "а стоял над прокладкой на двух хромированных подставках");
@@ -39,7 +34,6 @@ public class Coffin extends Item {
     public Color getColor() {
         return color;
     }
-
     @Override
     public String toString() {
         return name;

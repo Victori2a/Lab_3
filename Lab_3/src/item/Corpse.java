@@ -10,13 +10,6 @@ public class Corpse extends Item {
     public Corpse(String corpseName){
         this.corpseName = corpseName;
     }
-    @Override
-    public void action(Human human) {
-
-    }
-    public Color getColor() {
-        return null;
-    }
     public String toString() {
         return corpseName;
     }

@@ -21,8 +21,4 @@ public class Face extends BodyPart{
     public boolean hasType(BodyType type) {
         return faceType.contains(type);
     }
-    @Override
-    public void act(Human human) {
-
-    }
 }

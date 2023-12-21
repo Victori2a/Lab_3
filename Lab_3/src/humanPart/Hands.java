@@ -13,8 +13,4 @@ public class Hands extends BodyPart {
         hold = part.getOwner();
     }
 
-    @Override
-    public void act(Human human) {
-
-    }
 }

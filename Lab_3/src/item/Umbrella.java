@@ -14,10 +14,6 @@ public class Umbrella extends Item {
         this.types.addAll(Arrays.asList(types));
     }
     @Override
-    public void action(Human human) {
-    }
-
-    @Override
     public Color getColor() {
         return color;
     }

@@ -20,7 +20,7 @@ public class Main {
         grave.setEdgeColor(Color.BRIGHT_GREEN);
         Coffin coffin = new Coffin(gadge, Color.WHITE, grave, true);
         Human irvin = new Human("Ирвин");
-        irvin.setTypes(HumanType.EMBARRASED, HumanType.CONFUSED);
+        irvin.setTypes(HumanType.EMBARRASSED, HumanType.CONFUSED);
         irvin.head.getFace().setTypes(BodyType.EYES_BAG, BodyType.BRISTLE);
         cemetery.setPeople(irvin, luis, rachel, oz, director);
         irvin.hair.setTypes(BodyType.GRAY, BodyType.THIN);
@@ -40,6 +40,8 @@ public class Main {
             visitors[i].setThings(new Umbrella(Color.BLACK,ItemType.GOVERNMENT));
         }
         cemetery.setItems(fragment, grave, coffin,car,memorial);
+
+
         rachel.askedRead(director, fragment);
         luis.stand(grave.getEdge());
         luis.look(irvin);
@@ -51,6 +53,7 @@ public class Main {
         luis.seem();
         luis.tryToPity();
         coffin.stand();
+        memorial.setLocation(cemetery);
         luis.look(grave.getEdge());
         for (Basket bask : basket) {
             bask.stand(grave.getEdge());
@@ -66,7 +69,9 @@ public class Main {
         car.stand(memorial);
         oz.smoke();
         oz.putInCar(coffin, car);
-        oz.drive(car);
+        if (oz.equals(car.getDriver())) {
+            oz.drive(car);
+        }
         director.say(" Аминь");
         luis.takeBodyPart(rachel.hands);
         rachel.tryToProtest();

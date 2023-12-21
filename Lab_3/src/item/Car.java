@@ -51,24 +51,8 @@ public class Car extends Item implements Position{
         this.speed = (int) (Math.random() * 120);
         System.out.println(name+ " пришёл в движение. Скорость грузовика: " + speed);
     }
-    @Override
-    public void action(Human human) {
-
-    }
-    public Color getColor() {
-        return null;
-    }
     public String toString(){
         return name;
-    }
-    public boolean equals(Object obj){
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Car car = (Car) obj;
-        return getDriver().getName().equals(car.getDriver().getName());
-    }
-    public int hashCode(){
-        return Objects.hash(name);
     }
 }
 

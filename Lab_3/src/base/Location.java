@@ -50,15 +50,15 @@ public class Location {
             item.setLocation(this);
         }
     }
-    public Item[] getItems() {
-        Item[] items = new Item[this.items.size()];
-        return this.items.toArray(items);
-    }
-    public void removeItems(Item... items) {
-        for(Item item : items){
-            this.items.remove(item);
-        }
-    }
+//    public Item[] getItems() {
+//        Item[] items = new Item[this.items.size()];
+//        return this.items.toArray(items);
+//    }
+//    public void removeItems(Item... items) {
+//        for(Item item : items){
+//            this.items.remove(item);
+//        }
+//    }
     @Override
     public String toString() {
         return name;

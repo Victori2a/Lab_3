@@ -15,7 +15,7 @@ public class Eyes extends BodyPart{
     public double getClarity(){
         return clarity;
     }
-    @Override
+
     public void act(Human human) {
         System.out.println(getName()+" "+human + " сщурились из-за яркости" );
         human.setTypes(HumanType.BLINDED);

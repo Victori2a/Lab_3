@@ -21,23 +21,12 @@ public class Grave extends Item {
     public void setEdgeColor(Color color) {
         this.edge.color = color;
     }
-    @Override
-    public void action(Human human) {
-
-    }
-    public Color getColor() {
-        return null;
-    }
 
     public class Edge extends Item implements Position {
         private Color color;
         private final String name = "край могилы ";
         public Color getColor(){
             return color;
-        }
-        @Override
-        public void action(Human human) {
-
         }
 
         @Override

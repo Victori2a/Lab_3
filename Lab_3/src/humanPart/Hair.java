@@ -21,8 +21,5 @@ public class Hair extends BodyPart{
     public void disheveled(){
         System.out.println(getName() + " спутались. Ухоженность волос "+getOwner()+": " + stylishLook);
     }
-    @Override
-    public void act(Human human) {
 
-    }
 }

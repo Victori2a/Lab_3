@@ -8,20 +8,10 @@ import enums.Color;
 public class Cigarette extends Item {
     private String name = "сигарета";
     private boolean suitable = false;
-    public Cigarette(boolean var){
-        this.suitable = true;
-    }
-    private void goOut(){
+    public void goOut(){
         this.suitable = false;
     }
-
-    @Override
-    public void action(Human human) {
-        //System.out.println(name+" плохо влияет на здоровье человека");
-        human.setTypes(HumanType.UNHEALTHY);
-        goOut();
-    }
-    public Color getColor() {
-        return null;
+    public void lit(){
+        this.suitable = true;
     }
 }

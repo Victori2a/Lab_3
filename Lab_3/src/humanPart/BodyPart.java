@@ -15,6 +15,5 @@ public abstract class BodyPart {
     public String getName(){
         return name;
     }
-    public abstract void act(Human human);
 
 }

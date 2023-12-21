@@ -12,8 +12,9 @@ public abstract class Item {
     protected Location location;
     protected Position position;
     protected ArrayList<ItemType> types = new ArrayList<>();
-    public abstract void action(Human human);
-    public abstract Color getColor();
+    public Color getColor() {
+        return null;
+    }
     public void setType(ItemType... types) {
         this.types.addAll(Arrays.asList(types));
     }
@@ -32,7 +33,7 @@ public abstract class Item {
     }
     public void stand(Position position){
         position.addPosition(this);
-        System.out.println(this + " стоит на " + position);
+        //System.out.println(this + " стоит на " + position);
     }
     public Position getPosition(){
         return position;
