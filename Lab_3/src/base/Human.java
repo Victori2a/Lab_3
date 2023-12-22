@@ -101,7 +101,7 @@ public class Human implements Drive{
             if (((Car) item).getHeadlights()){
                 this.setTypes(HumanType.BLINDED, HumanType.CONFUSED);
                 this.head.getEyes().act(this);
-                this.setCondition(Condition.COMFORT, -9);
+                this.setCondition(Condition.COMFORT, -8);
                 this.head.getEyes().setClarity(-0.02);
             }
         }

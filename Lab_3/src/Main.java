@@ -47,8 +47,8 @@ public class Main {
         luis.look(irvin);
         irvin.look(luis);
         luis.argue(irvin);
-        System.out.println(Arrays.toString(irvin.head.getFace().getTypes()));
-        System.out.println(Arrays.toString(irvin.hair.getTypes()));
+//        System.out.println(Arrays.toString(irvin.head.getFace().getTypes()));
+//        System.out.println(Arrays.toString(irvin.hair.getTypes()));
         new Wind().blow(irvin.hair);
         luis.seem();
         luis.tryToPity();
@@ -56,28 +56,25 @@ public class Main {
         memorial.setLocation(cemetery);
         luis.look(grave.getEdge());
         for (Basket bask : basket) {
-            bask.stand(grave.getEdge());
-        }
+            bask.stand(grave.getEdge());}
         oz.startCar(car);
         luis.look(cemetery);
         director.say(" 'Склоним головы в знак скорби'");
-        visitors[2].bowHead();
+        for (Human human:cemetery.getPeople()) {
+            human.bowHead();}
         luis.look(car);
         if (luis.hasType(HumanType.CONFUSED)){
-            luis.understand();
-        }
+            luis.understand();}
         car.stand(memorial);
         oz.smoke();
         oz.putInCar(coffin, car);
         if (oz.equals(car.getDriver())) {
-            oz.drive(car);
-        }
+            oz.drive(car);}
         director.say(" Аминь");
         luis.takeBodyPart(rachel.hands);
         rachel.tryToProtest();
         luis.stand(cars);
-        for (int i = 0; i < cemetery.getPeople().length; i++) {
-            director.setThings(cemetery.getPeople()[i].getThings());
-        }
+        for (Human h:cemetery.getPeople()) {
+            director.setThings(h.getThings());}
     }
 }
